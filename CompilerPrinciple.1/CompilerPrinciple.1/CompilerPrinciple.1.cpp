@@ -20,86 +20,118 @@ public:
 	}
 };
 
-tokeninf token_scan(const char *begining, const char *forward)
+tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 {
 	char ch;//当前读入的字符
 	int i = 0;//标记变量
-	string tempstr;
-	ch = *forward++;
-	tokeninf m;
+	string tempstr;//临时字符串，拼接字符用
+	ch=INPUTSTR[*forward];//向前指针前移
+	*forward=*forward+1;
+	tokeninf m;//二元组变量m
 	//跳过空格和换行
 	while (ch == blank || ch == tab || ch == newline) {
-		ch = *forward++;
-		begining++;
+		ch = INPUTSTR[*forward];
+		*forward=*forward+1;
+		*begining=*begining+1;
 	}
-	if (ch == '\0') {
+	//遇到字符串结束符
+	if (ch == '\0'||ch==NULL) {
 		m.tokendata = -99;
 		return(m);
 	}
 	//开头是字母且紧跟着字母或数字
 	else if (isalpha(ch)) {
-		ch = *forward++;
+		ch = INPUTSTR[*forward];
+		*forward = *forward + 1;
 		while (isalnum(ch)) {
-			ch = *forward;
-			forward++;
+			ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
 		}
-		forward--;
-		/*for (i=0; begining < forward; begining++) {
-			tempstr[i] = *begining;
-			i++;
-		}*/
-		//m.token = tempstr;
-		m.token = "数字字母组合";
+		*forward = *forward - 1;
+		m.token = "字母开头的数字字母组合";
 		return(m);
-		//return(gettoken(token), install_id(token));
 	}
 	//开头是数字且紧跟着数字
 	else if (isdigit(ch)) {
-		ch = *forward;
-		forward++;
-		while (isdigit(ch)) {
-			ch = *forward;
-			forward++;
+		if (ch = '0'){//以0开头的数字
+			ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
+			//0后跟x，16进制
+			if (ch == 'x') {
+				ch = INPUTSTR[*forward];
+				*forward = *forward + 1;
+				while (isxdigit(ch)) {
+					ch = INPUTSTR[*forward];
+					*forward = *forward + 1;
+				}
+				*forward = *forward - 1;
+				m.token = "16进制数字";
+				return(m);
+			}
+			//0后跟0-7，八进制数字
+			else if(ch >= '0'&&ch <= '7') {
+				ch = INPUTSTR[*forward];
+				*forward = *forward + 1;
+				while (ch >= '0'&&ch <= '7') {
+					ch = INPUTSTR[*forward];
+					*forward = *forward + 1;
+				}
+				*forward = *forward - 1;
+				m.token = "8进制数字";
+				return(m);
+			}
+			else {
+				*forward = *forward - 1;
+				m.token = "10进制数字";
+				return(m);
+			}
 		}
-		forward--;
-		/*for (; begining < forward; begining++) {
-			tempstr[i] = *begining;
-			i++;
-		}*/
+		else {
+			while (ch >= '1'&&ch <= '9') {
+				ch = INPUTSTR[*forward];
+				*forward = *forward + 1;
+			}
+			*forward = *forward - 1;
+			m.token = "10进制数字";
+			return(m);
+		}
+		/*ch = INPUTSTR[*forward];
+		*forward = *forward + 1;
+		while (isdigit(ch)) {
+			ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
+		}
+		*forward = *forward - 1;
 		m.token = "数字开头的数字组合";
-		return(m);
-		//retract(1);
-		//token=copytoken();
-		//return(INT, install_num(token));
+		return(m);*/
 	}
+	//判断符号
 	else
 		switch (ch) {
-		case '*':ch = *forward;
-			forward++;
+		case '*':ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
 			if (ch == '*') {
 				m.token = "EXP";
 				return(m);
 			}
 			else {
-				forward--;
-				//retract(1);
+				*forward = *forward - 1;
 				m.token = "MULTI";
 				return(m);
 			}break;
-		case ':':ch = *forward;
-			forward++;
+		case ':':ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "ASSIGN";
 				return(m);
 			}
 			else {
-				forward--;
-				//retract(1);
+				*forward = *forward - 1;
 				m.token = "COLON";
 				return(m);
 			}break;
-		case '<':ch = *forward;
-			forward++;
+		case '<':ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "LE";
 				return(m);
@@ -109,20 +141,18 @@ tokeninf token_scan(const char *begining, const char *forward)
 				return(m);
 			}
 			else {
-				forward--;
-				//retract(1);
+				*forward = *forward - 1;
 				m.token = "LT";
 				return(m);
 			}break;
-		case '>':ch = *forward;
-			forward++;
+		case '>':ch = INPUTSTR[*forward];
+			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "GE";
 				return(m);
 			}
 			else {
-				forward--;
-				//retract(1);
+				*forward = *forward - 1;
 				m.token = "GT";
 				return(m);
 			}break;
@@ -157,14 +187,15 @@ tokeninf token_scan(const char *begining, const char *forward)
 }
 
 void main() {
-	string str;
-	cin >> str;
-	const char *begining= str.c_str();
-	const char *forward= str.c_str();//开始指针和向前指针
-	tokeninf i;//存放识别出的token
-	//while (*forward++!='\0'){
-		i=token_scan(begining,forward);
-		cout << "answer---" << i.token << endl;
-	//} //循环调用scan
+	char INPUTSTR[MAX];
+	int imm = 0,begining = 0, forward = 0;
+	gets_s(INPUTSTR);
+	tokeninf m("INIT",100);//存放返回的的token
+	cout << "INPUT INFORMATION: "<<INPUTSTR<< endl<<endl;
+	while (m.tokendata>0){
+		m=token_scan(&begining,&forward,INPUTSTR);
+		if(m.tokendata>0)
+			cout << "answer---" << m.token << endl;
+	} //循环调用scan
 	return;
 }
