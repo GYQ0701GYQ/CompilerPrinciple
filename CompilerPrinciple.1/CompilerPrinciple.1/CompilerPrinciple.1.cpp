@@ -3,31 +3,85 @@
 #include <stdio.h>//input&output
 #include <string>
 #define MAX 100
+#define KEYWARD {"if","then","else","while","do"}
 using namespace std;
 char blank = ' '; char tab = '\t'; char newline = '\n';
 //Token二元组类定义
 class tokeninf{
 public:
-	string token;
-	int tokendata;
+	string token;//token的种别
+	string tokendata;//token的属性值
 	tokeninf() {
 		token = "NULL";
-		tokendata = 100;
 	}
-	tokeninf(string t_token, int t_data) {
+	tokeninf(string t_token, string t_data) {
 		token = t_token;
 		tokendata = t_data;
 	}
 };
+//检测关键字
+inline tokeninf isKeyword(tokeninf &m) {
+	string Keyword[5] = { "if","then","else","while","do" };
+	for (int i = 0; i < 5; i++) {
+		if (m.tokendata == Keyword[i]) {
+			m.token = Keyword[i];
+			break;
+		}
+	}
+	int q = 0;
+	while (m.token[q] != '\0') {
+		m.token[q] = toupper(m.token[q]);
+		q++;
+	}
+	return m;
+}
+//16进制转10进制
+inline tokeninf HEXtoDEC(tokeninf &m) {
+	//字符串中提取数字转换进制
+	int i = 2, ans=0;
+	while (m.tokendata[i] != '\0') {
+		if (isdigit(m.tokendata[i])) {
+			ans = ans*16+(m.tokendata[i++]- 48);
+		}
+		else {
+			ans = ans*16+(m.tokendata[i++] - 87);
+		}
+	}
+	//转换后的int值再换成string形式
+	string str;
+	int cs = ans / 10, ys = ans % 10;
+	for (; (cs != 0)||(ys!=0); ys = cs % 10,cs = cs / 10) {
+		char ch = ys + 48;
+		str = ch + str;
+	}
+	m.tokendata = str;
+	return m;
+}
+//八进制转10进制
+inline tokeninf OCTtoDEC(tokeninf &m) {
+	int i = 0, ans = 0;
+	while (m.tokendata[i] != '\0') {
+		ans = ans * 8 + (m.tokendata[i++] - 48);
+	}
+	//转换后的int值再换成string形式
+	string str;
+	int cs = ans / 10, ys = ans % 10;
+	for (; (cs != 0) || (ys != 0); ys = cs % 10, cs = cs / 10) {
+		char ch = ys + 48;
+		str = ch + str;
+	}
+	m.tokendata = str;
+	return m;
+}
 
 tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 {
 	char ch;//当前读入的字符
 	int i = 0;//标记变量
-	string tempstr;//临时字符串，拼接字符用
-	ch=INPUTSTR[*forward];//向前指针前移
-	*forward=*forward+1;
+	ch=INPUTSTR[*forward];
+	*forward=*forward+1;//向前指针前移
 	tokeninf m;//二元组变量m
+
 	//跳过空格和换行
 	while (ch == blank || ch == tab || ch == newline) {
 		ch = INPUTSTR[*forward];
@@ -48,12 +102,17 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 			*forward = *forward + 1;
 		}
 		*forward = *forward - 1;
-		m.token = "字母开头的数字字母组合";
+		m.token = "ID";
+		for (string s1; (*begining) != (*forward); *begining = *begining + 1) {
+			s1 = INPUTSTR[*begining];
+			m.tokendata = m.tokendata + s1;
+		}
+		m=isKeyword(m);
 		return(m);
 	}
 	//开头是数字且紧跟着数字
 	else if (isdigit(ch)) {
-		if (ch = '0'){//以0开头的数字
+		if (ch == '0'){//以0开头的数字
 			ch = INPUTSTR[*forward];
 			*forward = *forward + 1;
 			//0后跟x，16进制
@@ -65,7 +124,12 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 					*forward = *forward + 1;
 				}
 				*forward = *forward - 1;
-				m.token = "16进制数字";
+				for (string s1; (*begining) != (*forward); *begining = *begining + 1) {
+					s1 = INPUTSTR[*begining];
+					m.tokendata = m.tokendata + s1;
+				}
+				m = HEXtoDEC(m);
+				m.token = "INT16";
 				return(m);
 			}
 			//0后跟0-7，八进制数字
@@ -77,12 +141,21 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 					*forward = *forward + 1;
 				}
 				*forward = *forward - 1;
-				m.token = "8进制数字";
+				for (string s1; (*begining) != (*forward); *begining = *begining + 1) {
+					s1 = INPUTSTR[*begining];
+					m.tokendata = m.tokendata + s1;
+				}
+				m = OCTtoDEC(m);
+				m.token = "INT8";
 				return(m);
 			}
 			else {
 				*forward = *forward - 1;
-				m.token = "10进制数字";
+				for (string s1; (*begining) != (*forward); *begining = *begining + 1) {
+					s1 = INPUTSTR[*begining];
+					m.tokendata = m.tokendata + s1;
+				}
+				m.token = "INT10";
 				return(m);
 			}
 		}
@@ -92,26 +165,24 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 				*forward = *forward + 1;
 			}
 			*forward = *forward - 1;
-			m.token = "10进制数字";
+			for (string s1; (*begining) != (*forward); *begining = *begining + 1) {
+				s1 = INPUTSTR[*begining];
+				m.tokendata = m.tokendata + s1;
+			}
+			m.token = "INT10";
 			return(m);
 		}
-		/*ch = INPUTSTR[*forward];
-		*forward = *forward + 1;
-		while (isdigit(ch)) {
-			ch = INPUTSTR[*forward];
-			*forward = *forward + 1;
-		}
-		*forward = *forward - 1;
-		m.token = "数字开头的数字组合";
-		return(m);*/
 	}
 	//判断符号
 	else
 		switch (ch) {
-		case '*':ch = INPUTSTR[*forward];
+		case '*':
+			m.tokendata = ch;
+			ch = INPUTSTR[*forward];
 			*forward = *forward + 1;
 			if (ch == '*') {
 				m.token = "EXP";
+				m.tokendata += ch;
 				return(m);
 			}
 			else {
@@ -119,10 +190,13 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 				m.token = "MULTI";
 				return(m);
 			}break;
-		case ':':ch = INPUTSTR[*forward];
+		case ':':
+			m.tokendata += ch;
+			ch = INPUTSTR[*forward];
 			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "ASSIGN";
+				m.tokendata += ch;
 				return(m);
 			}
 			else {
@@ -130,14 +204,18 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 				m.token = "COLON";
 				return(m);
 			}break;
-		case '<':ch = INPUTSTR[*forward];
+		case '<':
+			m.tokendata += ch;
+			ch = INPUTSTR[*forward];
 			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "LE";
+				m.tokendata += ch;
 				return(m);
 			}
 			else if (ch == '>') {
 				m.token = "NE";
+				m.tokendata += ch;
 				return(m);
 			}
 			else {
@@ -145,10 +223,13 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 				m.token = "LT";
 				return(m);
 			}break;
-		case '>':ch = INPUTSTR[*forward];
+		case '>':
+			m.tokendata += ch;
+			ch = INPUTSTR[*forward];
 			*forward = *forward + 1;
 			if (ch == '=') {
 				m.token = "GE";
+				m.tokendata += ch;
 				return(m);
 			}
 			else {
@@ -157,26 +238,32 @@ tokeninf token_scan(int *begining, int *forward,char(&INPUTSTR)[MAX])
 				return(m);
 			}break;
 		case '=':
+			m.tokendata += ch;
 			m.token = "EQ";
 			return(m);
 			break;
 		case '+':
+			m.tokendata += ch;
 			m.token = "PLUS";
 			return(m);
 			break;
 		case '-':
+			m.tokendata += ch;
 			m.token = "MINUS";
 			return(m);
 			break;
 		case '/':
+			m.tokendata += ch;
 			m.token = "RDIV";
 			return(m);
 			break;
 		case ',':
+			m.tokendata += ch;
 			m.token = "COMMA";
 			return(m);
 			break;
 		case ';':
+			m.tokendata += ch;
 			m.token = "SEMIC";
 			return(m);
 			break;
@@ -190,12 +277,11 @@ void main() {
 	char INPUTSTR[MAX];
 	int imm = 0,begining = 0, forward = 0;
 	gets_s(INPUTSTR);
-	tokeninf m("INIT",100);//存放返回的的token
-	cout << "INPUT INFORMATION: "<<INPUTSTR<< endl<<endl;
-	while (m.tokendata>0){
+	tokeninf m("INIT","INITDATA");//存放返回的的token
+	while (m.token !="NULL"){
 		m=token_scan(&begining,&forward,INPUTSTR);
-		if(m.tokendata>0)
-			cout << "answer---" << m.token << endl;
+		if(m.token !="NULL")
+			cout << "answer---" << m.token <<"  "<<m.tokendata<< endl;
 	} //循环调用scan
 	return;
 }
