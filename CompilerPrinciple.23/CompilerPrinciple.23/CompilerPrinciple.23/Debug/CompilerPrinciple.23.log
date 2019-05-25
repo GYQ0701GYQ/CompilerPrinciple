@@ -1,0 +1,55 @@
+﻿  源.cpp
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\scanner.h(2): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
+  d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\源.cpp: note: 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(28): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(63): warning C4091: “typedef ”: 没有声明变量时忽略“Sc”的左侧
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(110): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(126): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(138): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(153): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(162): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(190): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(192): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(210): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(212): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(226): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(281): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(288): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(304): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(310): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(317): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(333): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(334): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(337): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(348): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(367): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(377): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(380): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(391): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(409): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(422): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(426): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(429): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(430): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(438): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(548): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(560): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(603): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(651): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(690): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(715): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(779): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(809): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(843): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(864): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(912): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(917): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(927): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1018): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1023): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1035): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1041): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1052): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(1093): warning C4018: “<”: 有符号/无符号不匹配
+d:\vs\vsworkplace\compilerprinciple\compilerprinciple.23\compilerprinciple.23\compilerprinciple.23\slr.h(315): warning C4715: “findloc”: 不是所有的控件路径都返回值
+  CompilerPrinciple.23.vcxproj -> D:\VS\VSworkplace\CompilerPrinciple\CompilerPrinciple.23\CompilerPrinciple.23\Debug\CompilerPrinciple.23.exe

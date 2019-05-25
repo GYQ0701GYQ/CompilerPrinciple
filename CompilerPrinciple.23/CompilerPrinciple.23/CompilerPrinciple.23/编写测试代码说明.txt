@@ -1,0 +1,6 @@
+布尔判断语句不能在整个布尔表达式外面加括号
+wrong：if(a==0)
+right:while (a3+15)>0xa
+right:if a>0
+
+关键字限制:"do","else","if","while","then"
